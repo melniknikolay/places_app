@@ -16,6 +16,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add a New Place'),
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

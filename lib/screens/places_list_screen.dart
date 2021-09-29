@@ -3,17 +3,15 @@ import 'package:provider/provider.dart';
 
 import './add_place_screen.dart';
 import '../providers/great_places.dart';
+import './place_detail_screen.dart';
 
 class PlacesListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: Text(
-          'Your Places',
-        ),
-        actions: [
+        title: Text('Your Places'),
+        actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
@@ -32,21 +30,28 @@ class PlacesListScreen extends StatelessWidget {
               )
             : Consumer<GreatPlaces>(
                 child: Center(
-                  child: Text('Got no places yet, start adding some!'),
+                  child: const Text('Got no places yet, start adding some!'),
                 ),
-                builder: (ctx, greatPlaces, ch) => greatPlaces.item.length <= 0
+                builder: (ctx, greatPlaces, ch) => greatPlaces.items.length <= 0
                     ? ch
                     : ListView.builder(
-                        itemCount: greatPlaces.item.length,
+                        itemCount: greatPlaces.items.length,
                         itemBuilder: (ctx, i) => ListTile(
                           leading: CircleAvatar(
-                            backgroundImage:
-                                FileImage(greatPlaces.item[i].image),
+                            backgroundImage: FileImage(
+                              greatPlaces.items[i].image,
+                            ),
                           ),
-                          title: Text(greatPlaces.item[i].title),
-                          // subtitle: Text(greatPlaces.item[i].location.address),
+                          title: Text(greatPlaces.items[i].title),
+                          subtitle: Text(
+                              greatPlaces.items[i].location.address != null
+                                  ? greatPlaces.items[i].location.address
+                                  : 'Default Value'),
                           onTap: () {
-                            // Go to detail page ...
+                            Navigator.of(context).pushNamed(
+                              PlaceDetailScreen.routeName,
+                              arguments: greatPlaces.items[i].id,
+                            );
                           },
                         ),
                       ),

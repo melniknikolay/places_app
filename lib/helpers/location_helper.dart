@@ -15,10 +15,13 @@ class LocationHelper {
       'latlng': '$lat,$lng',
       'key': GOOGLE_API_KEY,
     };
-    final url =
-        Uri.https('maps.googleapis.com', '/maps/api/geocode/json', params);
+    final url = Uri.https(
+      'maps.googleapis.com',
+      '/maps/api/geocode/json',
+      params,
+    );
 
     final response = await http.get(url);
-    return json.decode(response.body)['results'][0]['formatted_adress'];
+    return json.decode(response.body)['results'][0]['formatted_address'];
   }
 }

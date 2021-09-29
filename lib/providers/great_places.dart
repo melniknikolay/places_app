@@ -7,10 +7,14 @@ import '../helpers/db_helper.dart';
 import '../helpers/location_helper.dart';
 
 class GreatPlaces extends ChangeNotifier {
-  List<Place> _item = [];
+  List<Place> _items = [];
 
-  List<Place> get item {
-    return [..._item];
+  List<Place> get items {
+    return [..._items];
+  }
+
+  Place findById(String id) {
+    return _items.firstWhere((place) => place.id == id);
   }
 
   Future<void> addPlace(
@@ -27,11 +31,11 @@ class GreatPlaces extends ChangeNotifier {
     );
     final newPlace = Place(
       id: DateTime.now().toString(),
+      image: pickedImage,
       title: pickedTitle,
       location: updatedLocation,
-      image: pickedImage,
     );
-    _item.add(newPlace);
+    _items.add(newPlace);
     notifyListeners();
     DBHelper.insert('user_places', {
       'id': newPlace.id,
@@ -45,18 +49,16 @@ class GreatPlaces extends ChangeNotifier {
 
   Future<void> fetchAndSetPlaces() async {
     final dataList = await DBHelper.getData('user_places');
-    _item = dataList
+    _items = dataList
         .map(
           (item) => Place(
             id: item['id'],
             title: item['title'],
+            image: File(item['image']),
             location: PlaceLocation(
               latitude: item['loc_lat'],
               longitude: item['loc_lng'],
               address: item['address'],
-            ),
-            image: File(
-              item['image'],
             ),
           ),
         )

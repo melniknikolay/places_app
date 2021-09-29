@@ -3,6 +3,9 @@
    <application
         android:label="places_app"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDlSfa64kFYN71yMDIylrz_K5WUn3rAdJQ"/>
+        
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -27,6 +30,8 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+              <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDlSfa64kFYN71yMDIylrz_K5WUn3rAdJQ"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

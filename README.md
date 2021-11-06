@@ -1,16 +1,38 @@
-# places_app
+# Places App
 
-A new Flutter project.
 
-## Getting Started
+The application allows you to save your places, add photos and locations.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Add and save your place
+- You can shoot photo and add a photo to the place card 
+- Give current location or select place on map
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The application can be used to store your locations and their coordinates .
+
+
+
+
+
+## Tech
+
+Libraries and tools used in the project:
+
+- [Provider](https://pub.dev/packages/provider) - State management.
+- [http](https://pub.dev/packages/http) - Work with HTTP requests.
+- [Sqflite](https://pub.dev/packages/sqflite) - Data storage.
+- [Location](https://pub.dev/packages/location) - Get a location.
+- [Google Maps Flutter](https://pub.dev/packages/google_maps_flutter) -  Provides a Google Maps widget.
+- [Image Picker](https://pub.dev/packages/image_picker) - Work with image library and camera.
+- [Path Provider](https://pub.dev/packages/path_provider) - Work with filesystem.
+- [Path](https://pub.dev/packages/path) - Operations for manipulating paths.
+ 
+
+Examples of how the application works can be seen in the examples below. 
+
+
+
+
+## Examples
